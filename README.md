@@ -46,6 +46,11 @@ sudo virsh domifaddr f42-lab02
  sudo bash -c 'echo 192.168.124.174 lab02 >> /etc/hosts'
 ```
 
+Test connectivity again with 'ssh -i ~/.ssh/id_ed25519 root@192.168.124.168'
+
+That will prevent the prompt for accepting the fingerprint from stopping the
+testing playbook
+
 ## Testing playbook
 
 go to testing/ and replace the addresses in inventory.yml with the ip address
