@@ -4,12 +4,12 @@
   become: yes
   vars:
     pool_dir: "/var/lib/libvirt/images"
-    vm: f34-lab01
+    vm: f42-lab01
     vcpus: 2
     ram_mb: 2048
     cleanup: no
     net: default
-    ssh_pub_key: "/home/rgerardi/.ssh/id_rsa.pub"
+    ssh_pub_key: "/home/pablo/.ssh/id_ed25519.pub"
 
   tasks:
     - name: KVM Provision role
