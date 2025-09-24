@@ -1,0 +1,33 @@
+- name: Install netcat in both machines
+  hosts: testmachine1:testmachine2
+  tasks:
+    - name: Make sure the current version of ‘mc’ is installed.
+      dnf:
+        name: nmap-ncat
+        state: latest
+
+- name: Copy netcatlistener script to machine 1
+  hosts: testmachine1
+  tasks:
+    - name: Copy script
+      copy:
+        src: "netcatlistener.sh"
+        dest: "/tmp/netcatlistener.sh"
+
+- name: Launch netcat listener in machine 1
+  hosts: testmachine1
+  tasks:
+    - name: Run netcat server
+      shell: "bash /tmp/netcatlistener.sh &"
+
+- name: Send hello to machine 1 from machine 2
+  hosts: testmachine2
+  tasks:
+    - name: 
+      shell: "echo one | nc {{ hostvars['lab01'].ansible_host }}"
+
+- name: Check output received in netcat server
+  hosts: testmachine1
+  tasks:
+    - name: Check
+      shell: 'grep -q two /tmp/ncout.txt'

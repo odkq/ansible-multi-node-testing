@@ -1,0 +1,11 @@
+testmachine1:
+  hosts:
+    lab01:
+      ansible_host: 192.168.124.188
+      ansible_user: root
+
+testmachine2:
+  hosts:
+    lab02:
+      ansible_host: 192.168.124.91
+      ansible_user: root
